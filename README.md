@@ -23,7 +23,7 @@ We will create and isolate our project using a native virtual environment called
 python3 -m venv xlr8_env
 
 source xlr8_env/bin/activate   # Linux/macOS
-.\xlr8_env\Scripts\activate  # Windows
+.\xlr8_env\Scripts\activate    # Windows
 ```
 
 JAX (for CPU) and its dependencies:
