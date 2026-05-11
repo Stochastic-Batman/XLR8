@@ -1,7 +1,12 @@
 # XLR8
-Neural ODEs with JAX for chaotic dynamics
+Learning the Chaotic Lorenz Attractor via Neural ODEs
 
-Traditional numerical integration of complex, chaotic physical systems can be a massive computational bottleneck. XLR8 leverages Neural ODEs to learn the continuous-time vector field directly from raw observational trajectories. By modeling the system's dynamics using a neural network and solving the continuous trajectory forward in time via modern adaptive ODE solvers, XLR8 bypasses slow, step-by-step classical loops.
+The entire goal of this project is to take a neural network that knows absolutely nothing about physics, show it a bunch of coordinates over time, and let it learn the underlying math of the Lorenz system from scratch. Once trained, the neural network acts as a functional clone of the chaotic Lorenz equations, allowing us to predict complex, continuous-time trajectories without hardcoded physical laws.
+
+The name XLR8 is a double tribute to speed:
+1. In Ben 10, XLR8 is a sleek alien that accelerates to insane speeds instantly, controls friction, and sees the world in slow motion.
+2. In our code, traditional physics solvers get bogged down in slow Python loops. By using JAX, we compile our Neural ODE directly to machine code using XLA and use vectorized mapping to run thousands of chaotic simulations in parallel. It is pure speed directly on your CPU.
+
 
 ## Stack
 This is my first JAX project, so the stack might be clear for experienced users, but not for me:
