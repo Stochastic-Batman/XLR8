@@ -1,5 +1,5 @@
 # XLR8
-Learning the Chaotic Lorenz Attractor via Neural ODEs
+Learning the Lorenz Attractor via Neural ODEs
 
 The entire goal of this project is to take a neural network that knows absolutely nothing about physics, the model only observes trajectories, not the governing equations, and let it learn a continuous neural approximation of the Lorenz vector field from raw trajectories. Once trained, the neural network behaves as a learned dynamical system that approximates the Lorenz attractor and can generate continuous-time chaotic trajectories without explicitly encoding the governing equations.
 
