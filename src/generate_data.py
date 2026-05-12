@@ -1,21 +1,9 @@
 import os
 import jax
 import jax.numpy as jnp
-from typing import Final
 import matplotlib.pyplot as plt
 
-
-class LorenzConstants:
-    SIGMA: Final = 10.0
-    RHO: Final = 28.0
-    BETA: Final = 8/3
-
-
-class SimulationConstants:
-    NUM_PARTICLES: Final = 10000
-    NUM_STEPS: Final = 1000
-    T_MAX: Final = 20.0
-    SEED: Final = 95
+from src.constants import LorenzConstants, SimulationConstants
 
 
 def lorenz_deriv(state: jax.Array, t: float) -> jax.Array:

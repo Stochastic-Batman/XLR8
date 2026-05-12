@@ -45,12 +45,14 @@ python3 -c "import jax; print('JAX devices:', jax.devices())"
 ## Project Structure
 ```bash
 XLR8/
-├── data/                  # Generated synthetic trajectories (Lorenz System)
+├── data/                  # Generated synthetic trajectories (Lorenz System) + some visualization
+├── LICENSE
 ├── README.md
 ├── src/
+│   ├── benchmark.py       # Speed comparison scripts
+│   ├── constants.py       # Project-wide constants
 │   ├── generate_data.py   # Runge-Kutta data generation
 │   ├── model.py           # Equinox Neural ODE model configuration
-│   ├── train.py           # Training loop utilizing Diffrax and Optax
-│   └── benchmark.py       # Speed comparison scripts
+│   └── train.py           # Training loop utilizing Diffrax and Optax
 └── xlr8_env/
 ```
