@@ -16,7 +16,6 @@ class SimulationConstants:
 
 class TrainingConstants:
     DATA_PATH: Final = "data/lorenz_trajectories.npy"
-    SHARD_STEPS: Final = 50
     LEARNING_RATE: Final = 3e-4
     RTOL: Final = 1e-2
     ATOL: Final = 1e-4
