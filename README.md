@@ -31,7 +31,7 @@ source xlr8_env/bin/activate   # Linux/macOS
 .\xlr8_env\Scripts\activate    # Windows
 ```
 
-JAX (for CPU) and its dependencies:
+`JAX` (for CPU) and its dependencies:
 ```bash
 pip install --upgrade "jax[cpu]"
 pip install equinox diffrax optax matplotlib
