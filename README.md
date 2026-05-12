@@ -1,11 +1,11 @@
 # XLR8
 Learning the Chaotic Lorenz Attractor via Neural ODEs
 
-The entire goal of this project is to take a neural network that knows absolutely nothing about physics, show it a bunch of coordinates over time, and let it learn the underlying math of the Lorenz system from scratch. Once trained, the neural network acts as a functional clone of the chaotic Lorenz equations, allowing us to predict complex, continuous-time trajectories without hardcoded physical laws.
+The entire goal of this project is to take a neural network that knows absolutely nothing about physics, the model only observes trajectories, not the governing equations, and let it learn a continuous neural approximation of the Lorenz vector field from raw trajectories. Once trained, the neural network behaves as a learned dynamical system that approximates the Lorenz attractor and can generate continuous-time chaotic trajectories without explicitly encoding the governing equations.
 
 The name XLR8 is a double tribute to speed:
 1. In Ben 10, XLR8 is a sleek alien that accelerates to insane speeds instantly, controls friction, and sees the world in slow motion.
-2. In our code, traditional physics solvers get bogged down in slow Python loops. By using JAX, we compile our Neural ODE directly to machine code using XLA and use vectorized mapping to run thousands of chaotic simulations in parallel. It is pure speed directly on your CPU.
+2. In our code, `JAX` allows us to JIT-compile the Neural ODE into optimized XLA machine code while vectorizing trajectory generation and training across thousands of simulations in parallel. 
 
 
 ## Stack
@@ -23,7 +23,7 @@ This project is configured to run fully on CPU environments, no GPU/TPU is requi
 python3 --version  # Should output: Python 3.14.x
 ```
 
-We will create and isolate our project using a native virtual environment called `xlr8_env`:
+We will create and isolate our project using Python's built-in virtual environment called `xlr8_env`:
 ```bash
 python3 -m venv xlr8_env
 
@@ -42,7 +42,12 @@ you can optionally verify the installation:
 python3 -c "import jax; print('JAX devices:', jax.devices())"
 ```
 
-## Training and Benchmarking
+## Generating the Data & Training the `XLR8` Model
+
+To generate the data, run:
+```bash
+python -m src.generate_data
+```
 
 Train the network with:
 ```bash
@@ -51,18 +56,25 @@ python -m src.train
 
 To change the hyperparameters, modify `src/constants.py`.
 
+Training automatically saves:
+- serialized model checkpoints
+- normalization statistics
+- rollout visualizations
+- training loss curves
+
 
 ## Project Structure
 ```bash
 XLR8/
-├── data/                  # Generated synthetic trajectories (Lorenz System) + some visualization
+├── checkpoints/           # (Gitignored) Saved models and norm stats 
+├── data/                  # (Gitignored) Generated synthetic trajectories (Lorenz System) + some visualization
 ├── LICENSE
 ├── README.md
 ├── src/
-│   ├── benchmark.py       # Speed comparison scripts
 │   ├── constants.py       # Project-wide constants
 │   ├── generate_data.py   # Runge-Kutta data generation
 │   ├── model.py           # Equinox Neural ODE model configuration
-│   └── train.py           # Training loop utilizing Diffrax and Optax
+│   ├── train.py           # Training loop utilizing Diffrax and Optax
+│   └── visualize.py       # I was too lazy to code this, so I generated it with Gemini 3.1 Pro
 └── xlr8_env/
 ```
