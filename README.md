@@ -42,6 +42,16 @@ you can optionally verify the installation:
 python3 -c "import jax; print('JAX devices:', jax.devices())"
 ```
 
+## Training and Benchmarking
+
+Train the network with:
+```bash
+python -m src.train
+```
+
+To change the hyperparameters, modify `src/constants.py`.
+
+
 ## Project Structure
 ```bash
 XLR8/
